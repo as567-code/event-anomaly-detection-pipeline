@@ -1,0 +1,40 @@
+{
+  "version": "v1",
+  "n_features": 15,
+  "feature_names": [
+    "amount",
+    "hour_of_day",
+    "day_of_week",
+    "merchant_category",
+    "distance_from_home",
+    "distance_from_last_txn",
+    "transaction_frequency",
+    "avg_transaction_amount",
+    "time_since_last_txn",
+    "is_online",
+    "card_present",
+    "merchant_risk_score",
+    "account_age_days",
+    "num_failed_txns_24h",
+    "credit_utilization"
+  ],
+  "coefficients": [
+    0.10516314222507928,
+    -0.5725854327729617,
+    0.353725906229926,
+    0.0846105818145948,
+    -0.025630765446268456,
+    0.0008994885751806921,
+    -0.21060034502161043,
+    -0.016165296631222886,
+    -0.13709786934606244,
+    -0.24339521400174752,
+    -0.008552402350107468,
+    -0.09882959512063147,
+    -0.12848503394415997,
+    -0.008790477868709588,
+    -0.003412324783928175
+  ],
+  "intercept": -0.49246105041540417,
+  "threshold": 0.8
+}
