@@ -33,3 +33,28 @@ services:
       interval: 10s
       timeout: 10s
       retries: 10
+
+  producer:
+    build: ./producer
+    depends_on:
+      kafka:
+        condition: service_healthy
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_TOPIC: raw-events
+      EVENTS_PER_SECOND: 0
+    volumes:
+      - ./data:/app/data
+
+  scorer:
+    build: ./scorer
+    depends_on:
+      kafka:
+        condition: service_healthy
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      INPUT_TOPIC: raw-events
+      OUTPUT_TOPIC: flagged-anomalies
+      MODEL_PATH: /app/model/model_weights.json
+    volumes:
+      - ./artifacts:/app/model
