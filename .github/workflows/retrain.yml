@@ -1,0 +1,54 @@
+name: Model Retrain & Evaluate
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'model/**'
+      - 'data/**'
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r model/requirements.txt
+
+      - name: Generate datasets
+        working-directory: model
+        run: python data_generator.py
+
+      - name: Train v1 baseline
+        working-directory: model
+        run: python train_v1.py
+
+      - name: Train v2 improved
+        working-directory: model
+        run: python train_v2.py
+
+      - name: Copy artifacts to project root
+        run: |
+          cp model/artifacts/* artifacts/
+          cp model/metrics/* metrics/
+
+      - name: Evaluate and compare
+        working-directory: model
+        run: python evaluate.py
+
+      - name: Validate metrics targets
+        run: pytest tests/metrics/ -v
+
+      - name: Upload model artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-artifacts
+          path: |
+            artifacts/
+            metrics/
+            METRICS.md
