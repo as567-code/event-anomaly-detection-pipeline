@@ -1,0 +1,21 @@
+scorer-1  | 01:28:23.595 [main] INFO  com.anomaly.ScorerApplication - Starting Anomaly Scorer
+scorer-1  | 01:28:23.596 [main] INFO  com.anomaly.ScorerApplication -   Kafka: kafka:9092
+scorer-1  | 01:28:23.597 [main] INFO  com.anomaly.ScorerApplication -   Input topic: raw-events
+scorer-1  | 01:28:23.597 [main] INFO  com.anomaly.ScorerApplication -   Output topic: flagged-anomalies
+scorer-1  | 01:28:23.597 [main] INFO  com.anomaly.ScorerApplication -   Model: /app/model/model_weights.json
+scorer-1  | 01:28:23.666 [main] INFO  com.anomaly.ModelLoader - Model loaded: 18 features, threshold=0.5, scaler=true
+scorer-1  | 01:28:23.739 [main] INFO  com.anomaly.KafkaEventConsumer - Subscribed to topic 'raw-events', publishing anomalies to 'flagged-anomalies'
+scorer-1  | 01:28:23.902 [main] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-anomaly-scorer-1, groupId=anomaly-scorer] Error while fetching metadata with correlation id 2 : {raw-events=LEADER_NOT_AVAILABLE}
+scorer-1  | 01:28:24.006 [main] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-anomaly-scorer-1, groupId=anomaly-scorer] Error while fetching metadata with correlation id 5 : {raw-events=LEADER_NOT_AVAILABLE}
+scorer-1  | 01:28:27.387 [kafka-producer-network-thread | producer-1] WARN  o.apache.kafka.clients.NetworkClient - [Producer clientId=producer-1] Error while fetching metadata with correlation id 4 : {flagged-anomalies=LEADER_NOT_AVAILABLE}
+scorer-1  | 01:28:33.743 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 107898 events (10787 events/sec), flagged 4913 anomalies
+scorer-1  | 01:28:43.746 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 234402 events (11717 events/sec), flagged 10654 anomalies
+scorer-1  | 01:28:53.748 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 360318 events (12007 events/sec), flagged 16340 anomalies
+scorer-1  | 01:29:03.752 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 482727 events (12065 events/sec), flagged 21903 anomalies
+scorer-1  | 01:29:13.765 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 607047 events (12135 events/sec), flagged 27533 anomalies
+scorer-1  | 01:29:23.767 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 729771 events (12158 events/sec), flagged 33105 anomalies
+scorer-1  | 01:29:33.771 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 847959 events (12108 events/sec), flagged 38432 anomalies
+scorer-1  | 01:29:43.775 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 966903 events (12081 events/sec), flagged 43820 anomalies
+scorer-1  | 01:29:53.782 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 1090971 events (12116 events/sec), flagged 49443 anomalies
+scorer-1  | 01:30:03.788 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 1212435 events (12119 events/sec), flagged 54950 anomalies
+scorer-1  | 01:30:13.796 [main] INFO  com.anomaly.KafkaEventConsumer - Processed 1334655 events (12127 events/sec), flagged 60514 anomalies
